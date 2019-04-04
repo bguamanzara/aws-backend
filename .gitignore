@@ -1,0 +1,9 @@
+/target/*
+.settings/*
+.classpath
+.project
+src/main/resources/json_web_key.json
+bin/*
+target/*
+bin
+/bin/*
