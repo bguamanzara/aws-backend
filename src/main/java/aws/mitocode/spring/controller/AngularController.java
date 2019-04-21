@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @CrossOrigin
 public class AngularController {
 
-	@RequestMapping(value= {"/security**","/about**","/logout**","/mapa**","/problema**"})
+	@RequestMapping(value= {"/security**","/about**","/logout**","/mapa**","/problema**","/encuesta**"})
 	public String redirectTo(){
 		return "index"; 
 	}	

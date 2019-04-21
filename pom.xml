@@ -114,10 +114,10 @@
 <!-- 		</dependency> -->
 
 		<!-- Para enviar email usando SMTP -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>javax.mail</artifactId>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>io.springfox</groupId>

@@ -13,4 +13,5 @@ public interface IEncuestaService {
 	Page<Encuesta> obtenerDatosPaginados(Pageable pageable, String usuario, Collection<GrantedAuthority> ltaRoles);
 	void guardarDatos(Encuesta feedback);
 	void eliminarDatos(int id);
+	public Encuesta obtenerPorId(Integer id);
 }

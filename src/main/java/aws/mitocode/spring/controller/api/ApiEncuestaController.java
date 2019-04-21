@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,7 +47,7 @@ public class ApiEncuestaController {
 	}
 	
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RespuestaApi> guardarFeedBack(
+	public ResponseEntity<RespuestaApi> guardar(
 			@RequestBody Encuesta encuesta){
 		try {
 			encuestaService.guardarDatos(encuesta);
@@ -57,11 +58,35 @@ public class ApiEncuestaController {
 		}
 	}
 	
+	@GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Encuesta> obtenerPorId(
+			@PathVariable int id){
+		try {
+			Encuesta en = new Encuesta();
+			en = encuestaService.obtenerPorId(id);
+			return new ResponseEntity<Encuesta>(en, HttpStatus.OK);
+		}catch(Exception e) {
+			logger.error("Error: ",e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@DeleteMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RespuestaApi> eliminarFeedBack(
+	public ResponseEntity<RespuestaApi> eliminar(
 			@PathVariable int id){
 		try {
 			encuestaService.eliminarDatos(id);
+			return new ResponseEntity<RespuestaApi>(new RespuestaApi("OK",""), HttpStatus.OK);
+		}catch(Exception e) {
+			logger.error("Error: ",e);
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RespuestaApi> actualizar(@RequestBody Encuesta encuesta){
+		try {
+			encuestaService.guardarDatos(encuesta);
 			return new ResponseEntity<RespuestaApi>(new RespuestaApi("OK",""), HttpStatus.OK);
 		}catch(Exception e) {
 			logger.error("Error: ",e);

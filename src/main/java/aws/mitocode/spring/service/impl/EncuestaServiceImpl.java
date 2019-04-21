@@ -40,6 +40,11 @@ public class EncuestaServiceImpl implements IEncuestaService {
 	public void guardarDatos(Encuesta feedback) {
 		encuestaDao.save(feedback);
 	}
+	
+	@Override
+	public Encuesta obtenerPorId(Integer id) {
+		return encuestaDao.findOne(id);
+	}
 
 	@Override
 	public void eliminarDatos(int id) {
